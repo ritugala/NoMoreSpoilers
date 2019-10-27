@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "browser_action": {
+      "default_popup": "./Main/templates/popup.html"
+    },
+  "name": "No Spoliers!",
+  "version": "0.1.0",
+  "background": {
+     "scripts": ["./Main/static/background.js"],
+     "persistent": false
+
+   },
+  "permissions": ["declarativeContent", "storage"],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "css": ["./Main/static/styles.css"],
+    "js": ["./Main/static/content.js"]
+  }]
+
+}
