@@ -1,5 +1,10 @@
 from flask import render_template, request, jsonify
 from Main import app
+#revathi : beautiful soup web scraping + text extraction from summary
+from selenium import WebDriver
+import pandas as pd
+from bs4 import BeautifulSoup
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('popup.html')
@@ -13,7 +18,10 @@ def index():
         Series.replace(" ", "_")
         url = 'https://en.wikipedia.org/wiki/'+Series+'_(season_'+Season+')'
         print('This is URL:',url)
+
         #insert beautiful soup work here
+
+
         #Return Statements will be changed
         return jsonify({'Season':Season, 'Series': Series})
     return jsonify({'Error':'Missing Data' })
