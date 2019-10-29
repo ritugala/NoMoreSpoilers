@@ -4,7 +4,8 @@ import pandas as pd
 from rake_nltk import Rake
 # from routes import url
 
-driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+#This is Ritu's chrome driver
+driver = webdriver.Chrome('C:/Program Files/chromedriver')
 
 #Use this one when combining the whole app
 # driver.get(url)

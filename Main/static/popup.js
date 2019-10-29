@@ -17,19 +17,27 @@
 // }
 
 
-$(document).ready(function() {
-     $('form').on('submit', function(event) {
-       $.ajax({
-          data : {
-             Series : $('#Series').val(),
-             Season: $('#Season').val(),
-                 },
-             type : 'POST',
-             url : 'http://127.0.0.1:5000/index'
+$(document).ready(function()
+{
+     $('form').on('submit', function(event)
+      {
+        console.log('sending data');
+         $.ajax({
+            data : {
+               Series : $('#Series').val(),
+               Season: $('#Season').val(),
+                   },
+               type : 'POST',
+               url : 'http://127.0.0.1:5000/index'
+              })
+          .done(function(data)
+          {
+            chrome.storage.sync.set({keywords:data.keywords}, function()
+            {
+              console.log('Data is set');
+              console.log('Data is: '+data.keywords);
             })
-        .done(function(data) {
-       $('#output').text(data.Series).show();
+          });
+        event.preventDefault();
       });
-      event.preventDefault();
-      });
-});
+    });

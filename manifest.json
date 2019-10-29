@@ -13,7 +13,7 @@
   "permissions": ["declarativeContent", "storage"],
   "content_scripts": [{
     "matches": ["<all_urls>"],
-    "css": ["./Main/static/styles.css"],
+    
     "js": ["./Main/static/content.js"]
   }]
 
