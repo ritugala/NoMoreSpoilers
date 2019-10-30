@@ -1,4 +1,7 @@
 chrome.runtime.onInstalled.addListener(function() {
+   chrome.storage.sync.set({color: '#3aa757'}, function() {
+     console.log('The color is green.');
+   });
    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
      chrome.declarativeContent.onPageChanged.addRules([{
        conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -9,15 +12,3 @@ chrome.runtime.onInstalled.addListener(function() {
      }]);
    });
  });
-
- chrome.storage.onChanged.addListener(function(changes, namespace) {
-         for (var key in changes) {
-           var storageChange = changes[key];
-           console.log('Storage key "%s" in namespace "%s" changed. ' +
-                       'Old value was "%s", new value is "%s".',
-                       key,
-                       namespace,
-                       storageChange.oldValue,
-                       storageChange.newValue);
-         }
-       });
