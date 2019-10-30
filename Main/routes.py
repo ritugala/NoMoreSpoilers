@@ -1,6 +1,6 @@
 from flask import render_template, request, jsonify
 from Main import app
-
+from Main.text_extraction import text_extraction
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('popup.html')
@@ -14,5 +14,6 @@ def index():
         Series.replace(" ", "_")
         url = 'https://en.wikipedia.org/wiki/'+Series+'_(season_'+Season+')'
         print('This is URL:',url)
-        return jsonify({'keywords':Series})
+        key_word = text_extraction(url)
+        return jsonify({'keywords':key_word})
     return jsonify({'Error':'Missing Data' })
