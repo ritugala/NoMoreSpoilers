@@ -14,7 +14,7 @@ chrome.storage.sync.get(['keywords'], function(result) {
             switch (curr.childNodes[i].nodeType) {
                 case Node.TEXT_NODE :
                     var temp = curr.childNodes[i].textContent.toLowerCase()
-                    if (temp.match(word)) {
+                    if (temp.match(word)) { ////This needs to be refined
                         console.log("Found!");
                         console.log(curr.childNodes[i].textContent)
                         var cl = curr.className;
