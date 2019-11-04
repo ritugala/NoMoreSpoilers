@@ -1,8 +1,8 @@
 from flask import render_template, request, jsonify
 from Main import app
-from web_scraper import WebScraper
-from text_extraction import TextExtractor
-
+from Main.text_extraction import text_extraction
+Season = ""
+Series = ""
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('popup.html')
@@ -15,16 +15,7 @@ def index():
         Series = str(Series)
         Series.replace(" ", "_")
         url = 'https://en.wikipedia.org/wiki/'+Series+'_(season_'+Season+')'
-        print('This is URL:', url)
-
-        #web scraping
-        scraper = WebScraper()
-        text = scraper.web_scraper(url)
-
-        #text mining
-        miner = TextExtractor()
-        keywords = miner.text_extractor(text)
-
-        #Return Statements will be changed
-        return jsonify({'keywords':keywords})
+        print('This is URL:',url)
+        key_word = text_extraction(url, Series)
+        return jsonify({'keywords':key_word})
     return jsonify({'Error':'Missing Data' })
