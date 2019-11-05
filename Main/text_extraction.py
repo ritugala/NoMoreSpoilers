@@ -1,7 +1,7 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import collections
-from Main.temp1 import charachter_extractor
+from Main.get_charachters import charachter_extractor
 import pandas as pd
 from rake_nltk import Rake
 # from routes import url
