@@ -37,7 +37,8 @@ $(document).ready(function()
               console.log('Data is set');
               console.log('Data is: '+data.keywords);
             })
-            $('output').text('You are Safe now!').show();
+            $('output').text('<p>You are Safe now!</p>').show();
+            console.log('output put')
           });
         event.preventDefault();
       });
